@@ -6,6 +6,7 @@ var option_tween: Tween
 @onready var category_bar: HBoxContainer = $CategoryViewport/CategoryBar
 @onready var categories = category_bar.get_children()
 var category_options = {
+	"PowerCategory": ["Sleep", "Shutdown", "Restart", "Change Account", "Sign Out", "Switch to Desktop"],
 	"SettingsCategory": ["System", "Internet", "Storage", "Bluetooth", "Display", "Power", "Audio", "Controller", "Keyboard", "Customization", "Accessibility", "Security", "Notifications", "Friends and Chat", "Downloads", "Cloud", "In Game", "Compatibility", "Family", "Remote Play", "Game Recording", "Home", "Library", "Store"],
 	"MusicCategory": ["Music Library", "Playlists"],
 	"PhotoCategory": ["Photo Library", "Albums"],
@@ -30,19 +31,19 @@ func _unhandled_input(event: InputEvent) -> void:
 		selected_category = min(selected_category + 1, 5)
 		print(selected_category)
 		update_selection()
-		centre_selected_category()
 		rebuild_option_list()
 		selected_option = 0
 		position_option_list()
+		centre_selected_category()
 		centre_selected_option()
 	elif event.is_action_pressed("ui_left"):
 		selected_category = max(selected_category - 1, 0)
 		print(selected_category)
 		update_selection()
-		centre_selected_category()
 		rebuild_option_list()
 		selected_option = 0
 		position_option_list()
+		centre_selected_category()
 		centre_selected_option()
 	elif event.is_action_pressed("ui_down"):
 		var option_count = $CategoryViewport/OptionList.get_child_count()
@@ -62,7 +63,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		var options = option_list.get_children()
 
 		if options.size() > 0:
-			print("Selected: ", options[selected_option].text)
+			var selected_name = options[selected_option].text
+			print("Selected: ", selected_name)
+
+			if categories[selected_category].name == "GamesCategory" and selected_name == "All Games":
+				OS.execute("steam", ["steam://open/gamepadui/library"])
+			elif categories[selected_category].name == "PowerCategory" and selected_name == "Switch to Desktop":
+				get_tree().quit()
 func update_selection() -> void:
 	for i in range(categories.size()):
 		var category = categories[i]
@@ -106,7 +113,8 @@ func rebuild_option_list() -> void:
 		var label = Label.new()
 		label.text = option_name
 		option_list.add_child(label)
-		update_option_selection()
+
+	update_option_selection()
 func update_option_selection() -> void:
 	var option_list = $CategoryViewport/OptionList
 	var options = option_list.get_children()

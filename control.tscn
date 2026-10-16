@@ -46,6 +46,10 @@ offset_bottom = 220.0
 grow_horizontal = 2
 theme_override_constants/separation = 165
 
+[node name="PowerCategory" type="Label" parent="CategoryViewport/CategoryBar" unique_id=1158210505]
+layout_mode = 2
+text = "Power"
+
 [node name="SettingsCategory" type="Label" parent="CategoryViewport/CategoryBar" unique_id=1800213854]
 layout_mode = 2
 text = "SETTINGS"
@@ -76,11 +80,3 @@ offset_left = 100.0
 offset_top = 250.0
 offset_right = 140.0
 offset_bottom = 290.0
-
-[node name="GameLibrary" type="Label" parent="CategoryViewport/OptionList" unique_id=2091690419]
-layout_mode = 2
-text = "Game Library"
-
-[node name="RecentlyPlayed" type="Label" parent="CategoryViewport/OptionList" unique_id=885319286]
-layout_mode = 2
-text = "Recently Played"
