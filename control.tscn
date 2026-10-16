@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://c7y6nxbu5o3xk"]
+
+[ext_resource type="Script" uid="uid://nxppq1dd5yos" path="res://control.gd" id="1_0fbet"]
+
+[node name="Control" type="Control" unique_id=862874495]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 128.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0fbet")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2145084915]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 128.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05882353, 0.019607844, 1, 1)
+
+[node name="CategoryViewport" type="Control" parent="." unique_id=2097544034]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 128.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CategoryBar" type="HBoxContainer" parent="CategoryViewport" unique_id=207330028]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.5
+offset_top = 120.0
+offset_right = 1113.5
+offset_bottom = 220.0
+grow_horizontal = 2
+theme_override_constants/separation = 165
+
+[node name="SettingsCategory" type="Label" parent="CategoryViewport/CategoryBar" unique_id=1800213854]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="MusicCategory" type="Label" parent="CategoryViewport/CategoryBar" unique_id=1402682208]
+layout_mode = 2
+text = "MUSIC"
+
+[node name="PhotoCategory" type="Label" parent="CategoryViewport/CategoryBar" unique_id=520330510]
+layout_mode = 2
+text = "PHOTO"
+
+[node name="VideoCategory" type="Label" parent="CategoryViewport/CategoryBar" unique_id=219409768]
+layout_mode = 2
+text = "VIDEO"
+
+[node name="GamesCategory" type="Label" parent="CategoryViewport/CategoryBar" unique_id=1880694732]
+layout_mode = 2
+text = "GAME"
+
+[node name="SteamCategory" type="Label" parent="CategoryViewport/CategoryBar" unique_id=1723895209]
+layout_mode = 2
+text = "STEAM"
+
+[node name="OptionList" type="VBoxContainer" parent="CategoryViewport" unique_id=1036210354]
+layout_mode = 1
+offset_left = 100.0
+offset_top = 250.0
+offset_right = 140.0
+offset_bottom = 290.0
+
+[node name="GameLibrary" type="Label" parent="CategoryViewport/OptionList" unique_id=2091690419]
+layout_mode = 2
+text = "Game Library"
+
+[node name="RecentlyPlayed" type="Label" parent="CategoryViewport/OptionList" unique_id=885319286]
+layout_mode = 2
+text = "Recently Played"
