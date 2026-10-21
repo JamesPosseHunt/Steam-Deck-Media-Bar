@@ -1,82 +1,291 @@
-[gd_scene format=3 uid="uid://c7y6nxbu5o3xk"]
+[gd_scene format=3 uid="uid://d115mx14dwbfc"]
 
-[ext_resource type="Script" uid="uid://nxppq1dd5yos" path="res://control.gd" id="1_0fbet"]
+[ext_resource type="Texture2D" uid="uid://c0dflkaa65n86" path="res://assets/stock.png" id="1_0fbet"]
+[ext_resource type="Script" uid="uid://bocix51hpdxuy" path="res://control.gd" id="1_kbped"]
+[ext_resource type="Texture2D" uid="uid://bh8jnf5lgghw7" path="res://assets/game.svg" id="2_62e2m"]
+[ext_resource type="Texture2D" uid="uid://b3xllof1u6amo" path="res://assets/power.png" id="2_ee4bf"]
+[ext_resource type="Texture2D" uid="uid://tkwv4jvfr5e" path="res://assets/settings.png" id="2_qtu10"]
+[ext_resource type="Texture2D" uid="uid://y4hwtfvigey1" path="res://assets/defaultuser.png" id="6_iy58a"]
+[ext_resource type="Texture2D" uid="uid://2s2yykgook81" path="res://assets/batterycharging.png" id="7_iy58a"]
 
-[node name="Control" type="Control" unique_id=862874495]
+[node name="Control" type="Control" unique_id=1313780460]
+custom_minimum_size = Vector2(1280, 800)
+custom_maximum_size = Vector2(1280, 800)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = 128.0
-offset_bottom = 72.0
+offset_bottom = 152.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_0fbet")
+script = ExtResource("1_kbped")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=2145084915]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=169352104]
+custom_minimum_size = Vector2(1280, 800)
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 800.0
+texture = ExtResource("1_0fbet")
+expand_mode = 1
+
+[node name="ClockTimer" type="Timer" parent="." unique_id=1930250994]
+autostart = true
+
+[node name="CategoryBar" type="HFlowContainer" parent="." unique_id=1542352372]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 128.0
-offset_bottom = 72.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -250.0
+offset_right = 726.0
+offset_bottom = -97.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.05882353, 0.019607844, 1, 1)
+pivot_offset = Vector2(5, 0)
+offset_transform_enabled = true
+theme_override_constants/h_separation = 100
 
-[node name="CategoryViewport" type="Control" parent="." unique_id=2097544034]
+[node name="PowerCategory" type="Control" parent="CategoryBar" unique_id=1127301074]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="CategoryBar/PowerCategory" unique_id=209895560]
+custom_minimum_size = Vector2(64, 64)
+custom_maximum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 64.0
+grow_horizontal = 2
+texture = ExtResource("2_ee4bf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PowerLabel" type="Label" parent="CategoryBar/PowerCategory/Icon" unique_id=934896376]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -4.0
+offset_right = 58.0
+offset_bottom = 19.0
+grow_vertical = 0
+text = "Power"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="OptionsViewport" type="Control" parent="CategoryBar/PowerCategory" unique_id=474580650]
 clip_contents = true
+anchors_preset = 0
+offset_right = 500.0
+offset_bottom = 500.0
+
+[node name="PowerOptions" type="VBoxContainer" parent="CategoryBar/PowerCategory/OptionsViewport" unique_id=851048843]
+propagate_maximum_size = false
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 720.0
+theme_override_constants/separation = 20
+
+[node name="SleepLabel" type="Label" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions" unique_id=1105620444]
+layout_mode = 2
+text = "Sleep"
+
+[node name="RestartLabel" type="Label" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions" unique_id=1405792495]
+layout_mode = 2
+text = "Restart"
+
+[node name="ShutdownLabel" type="Label" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions" unique_id=1903777856]
+layout_mode = 2
+text = "Shut Down"
+
+[node name="SwitchAccountLabel" type="Label" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions" unique_id=1312019315]
+layout_mode = 2
+text = "Switch Account"
+
+[node name="DesktopLabel" type="Label" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions" unique_id=1797718035]
+layout_mode = 2
+text = "Switch to Desktop"
+
+[node name="SettingsCategory" type="Control" parent="CategoryBar" unique_id=2104105116]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="CategoryBar/SettingsCategory" unique_id=1643206426]
+custom_minimum_size = Vector2(64, 64)
+custom_maximum_size = Vector2(64, 64)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 128.0
-offset_bottom = 72.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 64.0
+grow_horizontal = 2
+texture = ExtResource("2_qtu10")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SettingsLabel" type="Label" parent="CategoryBar/SettingsCategory/Icon" unique_id=1561097215]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = 28.0
+offset_right = 39.0
+offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "Settings"
 
-[node name="CategoryBar" type="HBoxContainer" parent="CategoryViewport" unique_id=207330028]
+[node name="OptionsViewport" type="Control" parent="CategoryBar/SettingsCategory" unique_id=1631801524]
+clip_contents = true
+anchors_preset = 0
+offset_right = 500.0
+offset_bottom = 500.0
+
+[node name="SettingsOptions" type="VBoxContainer" parent="CategoryBar/SettingsCategory/OptionsViewport" unique_id=1599170656]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 720.0
+theme_override_constants/separation = 20
+
+[node name="System" type="Label" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions" unique_id=1087118243]
+layout_mode = 2
+text = "System"
+
+[node name="Display" type="Label" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions" unique_id=1566630458]
+layout_mode = 2
+text = "Display"
+
+[node name="Audio" type="Label" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions" unique_id=123473804]
+layout_mode = 2
+text = "Audio"
+
+[node name="GameCategory" type="Control" parent="CategoryBar" unique_id=844150907]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="CategoryBar/GameCategory" unique_id=1310860157]
+custom_minimum_size = Vector2(64, 64)
+custom_maximum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 64.0
+grow_horizontal = 2
+texture = ExtResource("2_62e2m")
+stretch_mode = 5
+
+[node name="GameLabel" type="Label" parent="CategoryBar/GameCategory/Icon" unique_id=297245316]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = 28.0
+offset_right = 23.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game"
+
+[node name="OptionsViewport" type="Control" parent="CategoryBar/GameCategory" unique_id=1850089740]
+clip_contents = true
+anchors_preset = 0
+offset_right = 500.0
+offset_bottom = 500.0
+
+[node name="GameOptions" type="VBoxContainer" parent="CategoryBar/GameCategory/OptionsViewport" unique_id=2064537294]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 720.0
+theme_override_constants/separation = 20
+
+[node name="AllGames" type="Label" parent="CategoryBar/GameCategory/OptionsViewport/GameOptions" unique_id=1263970850]
+layout_mode = 2
+text = "All Games"
+
+[node name="InstalledGame1" type="Label" parent="CategoryBar/GameCategory/OptionsViewport/GameOptions" unique_id=1778682118]
+layout_mode = 2
+text = "Installed Game 1"
+
+[node name="InstalledGame2" type="Label" parent="CategoryBar/GameCategory/OptionsViewport/GameOptions" unique_id=1366705843]
+layout_mode = 2
+text = "Installed Game 2"
+
+[node name="StatusBarBackground" type="Panel" parent="." unique_id=185980452]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = -1.5
-offset_top = 120.0
-offset_right = 1113.5
-offset_bottom = 220.0
+offset_left = 703.0
+offset_right = -129.0
+offset_bottom = 48.0
 grow_horizontal = 2
-theme_override_constants/separation = 165
 
-[node name="PowerCategory" type="Label" parent="CategoryViewport/CategoryBar" unique_id=1158210505]
-layout_mode = 2
-text = "Power"
-
-[node name="SettingsCategory" type="Label" parent="CategoryViewport/CategoryBar" unique_id=1800213854]
-layout_mode = 2
-text = "SETTINGS"
-
-[node name="MusicCategory" type="Label" parent="CategoryViewport/CategoryBar" unique_id=1402682208]
-layout_mode = 2
-text = "MUSIC"
-
-[node name="PhotoCategory" type="Label" parent="CategoryViewport/CategoryBar" unique_id=520330510]
-layout_mode = 2
-text = "PHOTO"
-
-[node name="VideoCategory" type="Label" parent="CategoryViewport/CategoryBar" unique_id=219409768]
-layout_mode = 2
-text = "VIDEO"
-
-[node name="GamesCategory" type="Label" parent="CategoryViewport/CategoryBar" unique_id=1880694732]
-layout_mode = 2
-text = "GAME"
-
-[node name="SteamCategory" type="Label" parent="CategoryViewport/CategoryBar" unique_id=1723895209]
-layout_mode = 2
-text = "STEAM"
-
-[node name="OptionList" type="VBoxContainer" parent="CategoryViewport" unique_id=1036210354]
+[node name="StatusBar" type="HBoxContainer" parent="StatusBarBackground" unique_id=1067616023]
+custom_minimum_size = Vector2(50, 50)
+propagate_maximum_size = false
 layout_mode = 1
-offset_left = 100.0
-offset_top = 250.0
-offset_right = 140.0
-offset_bottom = 290.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 83.0
+offset_top = -1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="UserPic" type="TextureRect" parent="StatusBarBackground/StatusBar" unique_id=822830060]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("6_iy58a")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="UserLabel" type="Label" parent="StatusBarBackground/StatusBar" unique_id=1900254296]
+layout_mode = 2
+text = "PlaceholderName"
+
+[node name="TimeLabel" type="Label" parent="StatusBarBackground/StatusBar" unique_id=134908391]
+layout_mode = 2
+text = "HH:MM"
+
+[node name="BatteryLabel" type="Label" parent="StatusBarBackground/StatusBar" unique_id=1581214513]
+layout_mode = 2
+text = "--%"
+
+[node name="BatteryIcon" type="TextureRect" parent="StatusBarBackground/StatusBar" unique_id=1052317858]
+custom_minimum_size = Vector2(32, 32)
+custom_maximum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("7_iy58a")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="OptionsArea" type="Control" parent="." unique_id=1123865402]
+anchors_preset = 0
+offset_left = 282.0
+offset_top = 35.0
+offset_right = 435.0
+offset_bottom = 1401.0
+
+[connection signal="timeout" from="ClockTimer" to="." method="update_clock"]
