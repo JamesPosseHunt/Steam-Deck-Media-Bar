@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://2s2yykgook81" path="res://assets/batterycharging.png" id="7_iy58a"]
 [ext_resource type="Texture2D" uid="uid://dim4bwlgagly0" path="res://assets/CarlyImage.png" id="8_eh0v1"]
 [ext_resource type="Texture2D" uid="uid://3e85h3dad81l" path="res://assets/CarlyGame.png" id="9_am1vj"]
+[ext_resource type="Texture2D" uid="uid://bsdkf4etr146l" path="res://assets/CarlyMusic.png" id="9_eh0v1"]
+[ext_resource type="Texture2D" uid="uid://duvdhncn8rquq" path="res://assets/CarlyVideo.png" id="10_am1vj"]
 
 [node name="Control" type="Control" unique_id=1313780460]
 custom_minimum_size = Vector2(1280, 800)
@@ -252,6 +254,99 @@ offset_right = 500.0
 offset_bottom = 500.0
 
 [node name="ImageOptions" type="VBoxContainer" parent="CategoryBar/ImageCategory/OptionsViewport" unique_id=695149591]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 720.0
+theme_override_constants/separation = 20
+
+[node name="MusicCategory" type="Control" parent="CategoryBar" unique_id=1610845549]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="CategoryBar/MusicCategory" unique_id=688829188]
+custom_minimum_size = Vector2(64, 64)
+custom_maximum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 64.0
+grow_horizontal = 2
+texture = ExtResource("9_eh0v1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MusicLabel" type="Label" parent="CategoryBar/MusicCategory/Icon" unique_id=1149841062]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = 28.0
+offset_right = 39.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Music
+"
+
+[node name="OptionsViewport" type="Control" parent="CategoryBar/MusicCategory" unique_id=1322526565]
+clip_contents = true
+anchors_preset = 0
+offset_right = 500.0
+offset_bottom = 500.0
+
+[node name="MusicOptions" type="VBoxContainer" parent="CategoryBar/MusicCategory/OptionsViewport" unique_id=1809581298]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 720.0
+theme_override_constants/separation = 20
+
+[node name="VideoCategory" type="Control" parent="CategoryBar" unique_id=383869613]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="CategoryBar/VideoCategory" unique_id=2054648477]
+custom_minimum_size = Vector2(64, 64)
+custom_maximum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 64.0
+grow_horizontal = 2
+texture = ExtResource("10_am1vj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VideoLabel" type="Label" parent="CategoryBar/VideoCategory/Icon" unique_id=851996500]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = 28.0
+offset_right = 39.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Video"
+
+[node name="OptionsViewport" type="Control" parent="CategoryBar/VideoCategory" unique_id=1478169047]
+clip_contents = true
+anchors_preset = 0
+offset_right = 500.0
+offset_bottom = 500.0
+
+[node name="VideoOptions" type="VBoxContainer" parent="CategoryBar/VideoCategory/OptionsViewport" unique_id=1232394712]
 layout_mode = 0
 offset_right = 500.0
 offset_bottom = 720.0
