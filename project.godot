@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[gui]
+
+theme/custom_font="uid://dhj6a4t0q24sa"
+
 [input]
 
 ui_cancel={

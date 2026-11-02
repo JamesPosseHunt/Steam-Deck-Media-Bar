@@ -1,5 +1,7 @@
 
 extends RefCounted
+var app_type_cache: Dictionary = {}
+const APP_TYPE_CACHE_PATH := "user://steam_app_types.json"
 
 func get_all_games() -> Array[Dictionary]:
 	var games_by_id: Dictionary = {}
