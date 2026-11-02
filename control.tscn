@@ -5,7 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://bh8jnf5lgghw7" path="res://assets/game.svg" id="2_62e2m"]
 [ext_resource type="Texture2D" uid="uid://b3xllof1u6amo" path="res://assets/power.png" id="2_ee4bf"]
 [ext_resource type="Texture2D" uid="uid://tkwv4jvfr5e" path="res://assets/settings.png" id="2_qtu10"]
+[ext_resource type="Texture2D" uid="uid://bwqpcxst2isxv" path="res://assets/systemsettings.png" id="5_sky72"]
+[ext_resource type="Texture2D" uid="uid://b11ps8bakyecm" path="res://assets/allgames.svg" id="6_6a6wx"]
 [ext_resource type="Texture2D" uid="uid://y4hwtfvigey1" path="res://assets/defaultuser.png" id="6_iy58a"]
+[ext_resource type="Texture2D" uid="uid://cyxlogtmq7ru6" path="res://assets/displaysettings.png" id="6_pxugv"]
+[ext_resource type="Texture2D" uid="uid://bqnwj0ofttdba" path="res://audio.png" id="7_eh0v1"]
 [ext_resource type="Texture2D" uid="uid://2s2yykgook81" path="res://assets/batterycharging.png" id="7_iy58a"]
 
 [node name="Control" type="Control" unique_id=1313780460]
@@ -21,7 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kbped")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=169352104]
+[node name="Background" type="TextureRect" parent="." unique_id=169352104]
 custom_minimum_size = Vector2(1280, 800)
 layout_mode = 0
 offset_right = 1280.0
@@ -33,18 +37,10 @@ expand_mode = 1
 autostart = true
 
 [node name="CategoryBar" type="HFlowContainer" parent="." unique_id=1542352372]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -640.0
-offset_top = -250.0
-offset_right = 726.0
-offset_bottom = -97.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_top = 150.0
+offset_right = 1366.0
+offset_bottom = 650.0
 pivot_offset = Vector2(5, 0)
 offset_transform_enabled = true
 theme_override_constants/h_separation = 100
@@ -67,20 +63,6 @@ grow_horizontal = 2
 texture = ExtResource("2_ee4bf")
 expand_mode = 1
 stretch_mode = 5
-
-[node name="PowerLabel" type="Label" parent="CategoryBar/PowerCategory/Icon" unique_id=934896376]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 9.0
-offset_top = -4.0
-offset_right = 58.0
-offset_bottom = 19.0
-grow_vertical = 0
-text = "Power"
-horizontal_alignment = 1
-vertical_alignment = 2
 
 [node name="OptionsViewport" type="Control" parent="CategoryBar/PowerCategory" unique_id=474580650]
 clip_contents = true
@@ -161,20 +143,81 @@ offset_right = 500.0
 offset_bottom = 720.0
 theme_override_constants/separation = 20
 
-[node name="System" type="Label" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions" unique_id=1087118243]
+[node name="SystemSettings" type="Control" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions" unique_id=590773115]
+custom_minimum_size = Vector2(128, 128)
+clip_contents = true
 layout_mode = 2
-text = "System"
 
-[node name="Display" type="Label" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions" unique_id=1566630458]
+[node name="Icon" type="TextureRect" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions/SystemSettings" unique_id=400651665]
+custom_minimum_size = Vector2(128, 70)
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 127.0
+offset_bottom = 69.0
+texture = ExtResource("5_sky72")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions/SystemSettings" unique_id=1087118243]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 17.0
+offset_right = 342.0
+offset_bottom = 57.0
+text = "System"
+vertical_alignment = 1
+
+[node name="DisplaySettings" type="Control" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions" unique_id=261847465]
+custom_minimum_size = Vector2(128, 128)
+clip_contents = true
 layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions/DisplaySettings" unique_id=834940721]
+custom_minimum_size = Vector2(128, 70)
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 127.0
+offset_bottom = 69.0
+texture = ExtResource("6_pxugv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions/DisplaySettings" unique_id=1566630458]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 17.0
+offset_right = 622.0
+offset_bottom = 40.0
 text = "Display"
 
-[node name="Audio" type="Label" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions" unique_id=123473804]
+[node name="AudioSettings" type="Control" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions" unique_id=1058747749]
+custom_minimum_size = Vector2(128, 128)
+clip_contents = true
 layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions/AudioSettings" unique_id=1118119711]
+custom_minimum_size = Vector2(128, 70)
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 127.0
+offset_bottom = 69.0
+texture = ExtResource("7_eh0v1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions/AudioSettings" unique_id=123473804]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 17.0
+offset_right = 622.0
+offset_bottom = 40.0
 text = "Audio"
 
 [node name="GameCategory" type="Control" parent="CategoryBar" unique_id=844150907]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(64, 500)
 layout_mode = 2
 
 [node name="Icon" type="TextureRect" parent="CategoryBar/GameCategory" unique_id=1310860157]
@@ -184,9 +227,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -32.0
-offset_right = 32.0
-offset_bottom = 64.0
+offset_left = -256.0
+offset_right = 256.0
+offset_bottom = 512.0
 grow_horizontal = 2
 texture = ExtResource("2_62e2m")
 stretch_mode = 5
@@ -218,17 +261,29 @@ offset_right = 500.0
 offset_bottom = 720.0
 theme_override_constants/separation = 20
 
-[node name="AllGames" type="Label" parent="CategoryBar/GameCategory/OptionsViewport/GameOptions" unique_id=1263970850]
+[node name="AllGames" type="Control" parent="CategoryBar/GameCategory/OptionsViewport/GameOptions" unique_id=1621039602]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="CategoryBar/GameCategory/OptionsViewport/GameOptions/AllGames" unique_id=1181866861]
+custom_minimum_size = Vector2(128, 70)
+layout_mode = 0
+offset_left = -10.0
+offset_top = 4.0
+offset_right = 169.0
+offset_bottom = 132.0
+texture = ExtResource("6_6a6wx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CategoryBar/GameCategory/OptionsViewport/GameOptions/AllGames" unique_id=1292425098]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 45.0
+offset_right = 420.0
+offset_bottom = 85.0
 text = "All Games"
-
-[node name="InstalledGame1" type="Label" parent="CategoryBar/GameCategory/OptionsViewport/GameOptions" unique_id=1778682118]
-layout_mode = 2
-text = "Installed Game 1"
-
-[node name="InstalledGame2" type="Label" parent="CategoryBar/GameCategory/OptionsViewport/GameOptions" unique_id=1366705843]
-layout_mode = 2
-text = "Installed Game 2"
+vertical_alignment = 1
 
 [node name="StatusBarBackground" type="Panel" parent="." unique_id=185980452]
 custom_minimum_size = Vector2(0, 48)
@@ -287,5 +342,20 @@ offset_left = 282.0
 offset_top = 35.0
 offset_right = 435.0
 offset_bottom = 1401.0
+
+[node name="AllGamesPanel" type="PanelContainer" parent="." unique_id=439438213]
+visible = false
+custom_minimum_size = Vector2(500, 600)
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 600.0
+
+[node name="AllGamesScroll" type="ScrollContainer" parent="AllGamesPanel" unique_id=1882277730]
+layout_mode = 2
+
+[node name="AllGamesOptions" type="VBoxContainer" parent="AllGamesPanel/AllGamesScroll" unique_id=736881793]
+layout_mode = 2
+
+[node name="SteamNameRequest" type="HTTPRequest" parent="." unique_id=303350944]
 
 [connection signal="timeout" from="ClockTimer" to="." method="update_clock"]
