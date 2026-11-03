@@ -3,15 +3,13 @@
 [ext_resource type="Script" uid="uid://bocix51hpdxuy" path="res://control.gd" id="1_kbped"]
 [ext_resource type="Texture2D" uid="uid://o5jiy0qr7ijt" path="res://assets/dark-aurora.webp" id="2_pxugv"]
 [ext_resource type="Texture2D" uid="uid://dknigdmyys4hc" path="res://assets/CarlyPower.png" id="3_eh0v1"]
-[ext_resource type="FontFile" uid="uid://dhj6a4t0q24sa" path="res://assets/fonts/Manrope-SemiBold.ttf" id="4_eh0v1"]
+[ext_resource type="Script" uid="uid://bgtk3jhp1rko5" path="res://scripts/power_manager.gd" id="4_pxugv"]
 [ext_resource type="Texture2D" uid="uid://c1tlrsux1i4li" path="res://assets/CarlySettings.png" id="5_eh0v1"]
 [ext_resource type="Texture2D" uid="uid://y4hwtfvigey1" path="res://assets/defaultuser.png" id="6_iy58a"]
-[ext_resource type="Texture2D" uid="uid://cyxlogtmq7ru6" path="res://assets/displaysettings.png" id="6_pxugv"]
-[ext_resource type="Texture2D" uid="uid://bqnwj0ofttdba" path="res://audio.png" id="7_eh0v1"]
-[ext_resource type="Texture2D" uid="uid://2s2yykgook81" path="res://assets/batterycharging.png" id="7_iy58a"]
 [ext_resource type="Texture2D" uid="uid://dim4bwlgagly0" path="res://assets/CarlyImage.png" id="8_eh0v1"]
 [ext_resource type="Texture2D" uid="uid://3e85h3dad81l" path="res://assets/CarlyGame.png" id="9_am1vj"]
 [ext_resource type="Texture2D" uid="uid://bsdkf4etr146l" path="res://assets/CarlyMusic.png" id="9_eh0v1"]
+[ext_resource type="Texture2D" uid="uid://ci1t3pkylugbj" path="res://assets/batteryfull.png" id="10_0ytqx"]
 [ext_resource type="Texture2D" uid="uid://duvdhncn8rquq" path="res://assets/CarlyVideo.png" id="10_am1vj"]
 
 [node name="Control" type="Control" unique_id=1313780460]
@@ -87,29 +85,117 @@ offset_right = 500.0
 offset_bottom = 720.0
 theme_override_constants/separation = 20
 
-[node name="SleepLabel" type="Label" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions" unique_id=1105620444]
+[node name="SleepLabel" type="Control" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions" unique_id=1542296792]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_eh0v1")
+
+[node name="Icon" type="TextureRect" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions/SleepLabel" unique_id=1474044716]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 70.0
+offset_bottom = 75.0
+texture = ExtResource("3_eh0v1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions/SleepLabel" unique_id=1250322894]
+layout_mode = 0
+offset_left = 90.0
+offset_right = 490.0
+offset_bottom = 80.0
 text = "Sleep"
+vertical_alignment = 1
 
-[node name="RestartLabel" type="Label" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions" unique_id=1405792495]
+[node name="RestartLabel" type="Control" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions" unique_id=1732097]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_eh0v1")
+
+[node name="Icon" type="TextureRect" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions/RestartLabel" unique_id=1816785634]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 70.0
+offset_bottom = 75.0
+texture = ExtResource("3_eh0v1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions/RestartLabel" unique_id=760570521]
+layout_mode = 0
+offset_left = 90.0
+offset_right = 490.0
+offset_bottom = 80.0
 text = "Restart"
+vertical_alignment = 1
 
-[node name="ShutdownLabel" type="Label" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions" unique_id=1903777856]
+[node name="ShutdownLabel" type="Control" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions" unique_id=2052592262]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-text = "Shut Down"
 
-[node name="SwitchAccountLabel" type="Label" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions" unique_id=1312019315]
+[node name="Icon" type="TextureRect" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions/ShutdownLabel" unique_id=1678453649]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 70.0
+offset_bottom = 75.0
+texture = ExtResource("3_eh0v1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions/ShutdownLabel" unique_id=1063917114]
+layout_mode = 0
+offset_left = 90.0
+offset_right = 490.0
+offset_bottom = 80.0
+text = "Power Off"
+vertical_alignment = 1
+
+[node name="SwitchAccountLabel" type="Control" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions" unique_id=1847315648]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions/SwitchAccountLabel" unique_id=772768326]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 70.0
+offset_bottom = 75.0
+texture = ExtResource("3_eh0v1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions/SwitchAccountLabel" unique_id=1089962939]
+layout_mode = 0
+offset_left = 90.0
+offset_right = 490.0
+offset_bottom = 80.0
 text = "Switch Account"
+vertical_alignment = 1
 
-[node name="SettingsCategory" type="Control" parent="CategoryBar" unique_id=2104105116]
+[node name="DesktopLabel" type="Control" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions" unique_id=1600768179]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions/DesktopLabel" unique_id=391362876]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 70.0
+offset_bottom = 75.0
+texture = ExtResource("3_eh0v1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CategoryBar/PowerCategory/OptionsViewport/PowerOptions/DesktopLabel" unique_id=132376963]
+layout_mode = 0
+offset_left = 90.0
+offset_right = 490.0
+offset_bottom = 80.0
+text = "Return to Desktop"
+vertical_alignment = 1
+script = ExtResource("4_pxugv")
+
+[node name="SettingsCategory" type="Control" parent="CategoryBar" unique_id=869773533]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="CategoryBar/SettingsCategory" unique_id=1643206426]
+[node name="Icon" type="TextureRect" parent="CategoryBar/SettingsCategory" unique_id=237137974]
 custom_minimum_size = Vector2(64, 64)
 custom_maximum_size = Vector2(64, 64)
 layout_mode = 1
@@ -124,94 +210,89 @@ texture = ExtResource("5_eh0v1")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="SettingsLabel" type="Label" parent="CategoryBar/SettingsCategory/Icon" unique_id=1561097215]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -23.0
-offset_top = 28.0
-offset_right = 39.0
-offset_bottom = 51.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Label" type="Label" parent="CategoryBar/SettingsCategory/Icon" unique_id=556159185]
+layout_mode = 0
+offset_left = 7.5
+offset_top = 60.0
+offset_right = 55.5
+offset_bottom = 83.0
 text = "Settings"
 
-[node name="OptionsViewport" type="Control" parent="CategoryBar/SettingsCategory" unique_id=1631801524]
+[node name="OptionsViewport" type="Control" parent="CategoryBar/SettingsCategory" unique_id=48383741]
 clip_contents = true
 anchors_preset = 0
 offset_right = 500.0
 offset_bottom = 500.0
 
-[node name="SettingsOptions" type="VBoxContainer" parent="CategoryBar/SettingsCategory/OptionsViewport" unique_id=1599170656]
+[node name="SettingsOptions" type="VBoxContainer" parent="CategoryBar/SettingsCategory/OptionsViewport" unique_id=1504067791]
+propagate_maximum_size = false
 layout_mode = 0
 offset_right = 500.0
 offset_bottom = 720.0
 theme_override_constants/separation = 20
 
-[node name="SystemSettings" type="Control" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions" unique_id=590773115]
-custom_minimum_size = Vector2(128, 128)
-clip_contents = true
+[node name="SystemSettings" type="Control" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions" unique_id=1286752139]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions/SystemSettings" unique_id=1087118243]
+[node name="Icon" type="TextureRect" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions/SystemSettings" unique_id=1838094954]
 layout_mode = 0
-offset_left = 122.0
-offset_top = 17.0
-offset_right = 342.0
-offset_bottom = 57.0
-text = "System"
+offset_top = 5.0
+offset_right = 70.0
+offset_bottom = 75.0
+texture = ExtResource("5_eh0v1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions/SystemSettings" unique_id=1844807922]
+layout_mode = 0
+offset_left = 90.0
+offset_right = 490.0
+offset_bottom = 80.0
+text = "System Settings"
 vertical_alignment = 1
 
-[node name="DisplaySettings" type="Control" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions" unique_id=261847465]
-custom_minimum_size = Vector2(128, 128)
-clip_contents = true
+[node name="DisplaySettings" type="Control" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions" unique_id=1975707371]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions/DisplaySettings" unique_id=834940721]
-custom_minimum_size = Vector2(128, 70)
+[node name="Icon" type="TextureRect" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions/DisplaySettings" unique_id=907207774]
 layout_mode = 0
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 127.0
-offset_bottom = 69.0
-texture = ExtResource("6_pxugv")
+offset_top = 5.0
+offset_right = 70.0
+offset_bottom = 75.0
+texture = ExtResource("10_am1vj")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions/DisplaySettings" unique_id=1566630458]
+[node name="Label" type="Label" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions/DisplaySettings" unique_id=2080846620]
 layout_mode = 0
-offset_left = 122.0
-offset_top = 17.0
-offset_right = 622.0
-offset_bottom = 40.0
-text = "Display"
+offset_left = 90.0
+offset_right = 490.0
+offset_bottom = 80.0
+text = "Display Settings"
+vertical_alignment = 1
 
-[node name="AudioSettings" type="Control" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions" unique_id=1058747749]
-custom_minimum_size = Vector2(128, 128)
-clip_contents = true
+[node name="AudioSettings" type="Control" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions" unique_id=1270455837]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions/AudioSettings" unique_id=1118119711]
-custom_minimum_size = Vector2(128, 70)
+[node name="Icon" type="TextureRect" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions/AudioSettings" unique_id=1389982730]
 layout_mode = 0
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 127.0
-offset_bottom = 69.0
-texture = ExtResource("7_eh0v1")
+offset_top = 5.0
+offset_right = 70.0
+offset_bottom = 75.0
+texture = ExtResource("9_eh0v1")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions/AudioSettings" unique_id=123473804]
+[node name="Label" type="Label" parent="CategoryBar/SettingsCategory/OptionsViewport/SettingsOptions/AudioSettings" unique_id=864560155]
 layout_mode = 0
-offset_left = 122.0
-offset_top = 17.0
-offset_right = 622.0
-offset_bottom = 40.0
-text = "Audio"
+offset_left = 90.0
+offset_right = 490.0
+offset_bottom = 80.0
+text = "Audio Settings"
+vertical_alignment = 1
 
 [node name="ImageCategory" type="Control" parent="CategoryBar" unique_id=1102768891]
 custom_minimum_size = Vector2(64, 64)
@@ -363,9 +444,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -256.0
-offset_right = 256.0
-offset_bottom = 512.0
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 64.0
 grow_horizontal = 2
 texture = ExtResource("9_am1vj")
 stretch_mode = 5
@@ -407,9 +488,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -32.0
-offset_right = 64.0
-offset_bottom = 32.0
+offset_top = -59.0
+offset_right = 70.0
+offset_bottom = 11.0
 grow_vertical = 2
 texture = ExtResource("9_am1vj")
 expand_mode = 1
@@ -417,12 +498,57 @@ stretch_mode = 5
 
 [node name="Label" type="Label" parent="CategoryBar/GameCategory/OptionsViewport/GameOptions/AllGames" unique_id=1292425098]
 layout_mode = 0
-offset_left = 200.0
-offset_top = 45.0
-offset_right = 420.0
-offset_bottom = 85.0
+offset_left = 90.0
+offset_right = 490.0
+offset_bottom = 80.0
 text = "All Games"
 vertical_alignment = 1
+
+[node name="FriendsCategory" type="Control" parent="CategoryBar" unique_id=1314561934]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="CategoryBar/FriendsCategory" unique_id=481443689]
+custom_minimum_size = Vector2(64, 64)
+custom_maximum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 64.0
+grow_horizontal = 2
+texture = ExtResource("9_am1vj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FriendsLabel" type="Label" parent="CategoryBar/FriendsCategory/Icon" unique_id=1854924352]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = 28.0
+offset_right = 39.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Friends"
+
+[node name="OptionsViewport" type="Control" parent="CategoryBar/FriendsCategory" unique_id=61851213]
+clip_contents = true
+anchors_preset = 0
+offset_right = 500.0
+offset_bottom = 500.0
+
+[node name="FriendsOptions" type="VBoxContainer" parent="CategoryBar/FriendsCategory/OptionsViewport" unique_id=1667536200]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 720.0
+theme_override_constants/separation = 20
 
 [node name="StatusBarBackground" type="Panel" parent="." unique_id=185980452]
 custom_minimum_size = Vector2(0, 48)
@@ -471,7 +597,7 @@ text = "--%"
 custom_minimum_size = Vector2(32, 32)
 custom_maximum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("7_iy58a")
+texture = ExtResource("10_0ytqx")
 expand_mode = 1
 stretch_mode = 5
 

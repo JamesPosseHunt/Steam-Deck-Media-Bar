@@ -33,12 +33,12 @@ func initialise(
 func create_game_entry(game: Dictionary) -> Control:
 	var entry := Control.new()
 	entry.name = "Game_" + str(game["appid"])
-	entry.custom_minimum_size = Vector2(400, 110)
+	entry.custom_minimum_size = Vector2(0, 80)
 
 	var logo := TextureRect.new()
 	logo.name = "Logo"
-	logo.position = Vector2.ZERO
-	logo.size = Vector2(128, 128)
+	logo.size = Vector2(70, 70)
+	logo.position = Vector2(0, 5)
 	logo.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	logo.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 
@@ -96,8 +96,9 @@ func create_game_entry(game: Dictionary) -> Control:
 	var game_name := Label.new()
 	game_name.name = "Name"
 	game_name.text = str(game["name"])
-	game_name.position = Vector2(175, 30)
-	game_name.size = Vector2(220, 40)
+	game_name.position = Vector2(90, 0)
+	game_name.size = Vector2(400, 80)
+	game_name.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 
 	entry.add_child(game_name)
 

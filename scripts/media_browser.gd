@@ -139,6 +139,7 @@ func create_media_entry(
 
 	elif category_name == "ImageCategory":
 		var image_path: String = str(media_current_paths[category_name]).path_join(entry_name)
+		entry.set_meta("path", image_path)
 		thumbnail = get_image_thumbnail(image_path)
 
 	else:
@@ -182,12 +183,28 @@ func create_media_entry(
 # --------------------------------------------------
 
 func activate_selected_entry(category_name: String, entry: Control) -> void:
-	# Accepting files intentionally does nothing for now.
-	if not entry.name.begins_with("Folder_"):
+	if entry.name.begins_with("Folder_"):
+		var folder_name: String = entry.name.trim_prefix("Folder_")
+		enter_folder(category_name, folder_name)
 		return
 
-	var folder_name: String = entry.name.trim_prefix("Folder_")
-	enter_folder(category_name, folder_name)
+	if category_name == "ImageCategory":
+		var image_path: String = entry.get_meta("path", "")
+
+		if image_path.is_empty():
+			return
+
+		var image_paths: Array[String] = []
+
+		for media_entry in media_labels[category_name]:
+			if media_entry.has_meta("path"):
+				image_paths.append(media_entry.get_meta("path"))
+
+		var viewer_scene = preload("res://scenes/apps/image_viewer.tscn")
+		var viewer = viewer_scene.instantiate()
+
+		get_tree().root.add_child(viewer)
+		viewer.set_image_list(image_paths, image_path)
 
 
 func enter_folder(category_name: String, folder_name: String) -> void:
@@ -225,15 +242,33 @@ func go_back(category_name: String) -> void:
 # --------------------------------------------------
 # IMAGE THUMBNAILS
 # --------------------------------------------------
+func load_image_file(image_path: String) -> Image:
+	var image := Image.new()
+	var file_data: PackedByteArray = FileAccess.get_file_as_bytes(image_path)
 
+	if file_data.is_empty():
+		return null
+
+	# Detect WebP files regardless of their extension.
+	if (
+		file_data.size() >= 12
+		and file_data.slice(0, 4) == "RIFF".to_ascii_buffer()
+		and file_data.slice(8, 12) == "WEBP".to_ascii_buffer()
+	):
+		if image.load_webp_from_buffer(file_data) != OK:
+			return null
+	else:
+		if image.load(image_path) != OK:
+			return null
+
+	return image
 func get_image_thumbnail(image_path: String) -> Texture2D:
 	if media_thumbnail_cache.has(image_path):
 		return media_thumbnail_cache[image_path] as Texture2D
 
-	var image := Image.new()
-	var error: Error = image.load(image_path)
+	var image: Image = ImageLoader.load_image_file(image_path)
 
-	if error != OK:
+	if image == null:
 		push_warning("Could not load image: " + image_path)
 		return load(FOLDER_ICON_PATH) as Texture2D
 

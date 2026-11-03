@@ -9,12 +9,16 @@ extends Control
 @onready var game_options: VBoxContainer = $CategoryBar/GameCategory/OptionsViewport/GameOptions
 @onready var all_games_entry: Control = $CategoryBar/GameCategory/OptionsViewport/GameOptions/AllGames
 
+@onready var friends_options: VBoxContainer = $CategoryBar/FriendsCategory/OptionsViewport/FriendsOptions
+
 var status_bar = preload("res://scripts/status_bar.gd").new()
 var game_library = preload("res://scripts/game_library.gd").new()
 var game_browser = preload("res://scripts/game_browser.gd").new()
 var power_manager = preload("res://scripts/power_manager.gd").new()
 var steam_manager = preload("res://scripts/steam_manager.gd").new()
 var media_browser = preload("res://scripts/media_browser.gd").new()
+var friends_browser = preload("res://scripts/friends_browser.gd").new()
+
 
 var selected_category: int = 0
 var selected_option: int = 0
@@ -23,7 +27,11 @@ var option_tween: Tween
 var options_viewport: Control
 var current_options: VBoxContainer
 
+
+
 func _ready() -> void:
+	WallpaperManager.wallpaper_changed.connect(_on_wallpaper_changed)
+	WallpaperManager.load_wallpaper()
 	add_child(game_library)
 	game_library.initialise()
 
@@ -41,10 +49,18 @@ func _ready() -> void:
 
 	add_child(media_browser)
 	media_browser.initialise(self)
-
+	
 	steam_manager.steam_initialized.connect(_on_steam_initialized)
 	steam_manager.avatar_loaded.connect(_on_steam_avatar_loaded)
 	steam_manager.initialise_steam()
+	
+	add_child(friends_browser)
+	friends_browser.initialise(
+		self,
+		friends_options,
+		steam_manager
+	)
+	friends_browser.populate_friends()
 
 	selected_category = categories.find(
 		category_bar.get_node("GameCategory")
@@ -67,6 +83,12 @@ func _ready() -> void:
 
 	centre_selected_category()
 	game_browser.populate_game_options()
+	var friends: Array[Dictionary] = steam_manager.get_friends()
+
+	print("Friends retrieved: ", friends.size())
+
+	for friend in friends:
+		print(friend["name"], " - ", friend["status"])
 
 func _input(event: InputEvent) -> void:
 	var current_category: String = get_current_category_name()
@@ -87,6 +109,7 @@ func _input(event: InputEvent) -> void:
 			game_browser.close_all_games()
 		else:
 			change_category(-1)
+		return
 
 	if event.is_action_pressed("ui_right"):
 		if not game_browser.all_games_open:
@@ -243,13 +266,14 @@ func activate_selected_entry() -> void:
 			selected_entry
 		)
 		return
-
+	if current_category == "FriendsCategory":
+		var steam_id: int = int(selected_entry.name.trim_prefix("Friend_"))
+		print("Selected friend Steam ID: ", steam_id)
+		return
 	if current_category == "PowerCategory":
 		power_manager.activate_option(selected_entry)
 		return
-
-	# Other categories can add their own activation behaviour here.
-
+	
 func go_back() -> void:
 	var current_category: String = get_current_category_name()
 
@@ -335,3 +359,5 @@ func _on_steam_initialized(username: String) -> void:
 
 func _on_steam_avatar_loaded(texture: Texture2D) -> void:
 	user_pic.texture = texture
+func _on_wallpaper_changed(texture: Texture2D) -> void:
+	$Background.texture = texture

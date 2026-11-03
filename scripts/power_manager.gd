@@ -40,7 +40,9 @@ func activate_option(selected_entry: Control) -> void:
 		"SwitchAccountLabel":
 			print("Switch Account selected")
 			return
-
+		"DesktopLabel":
+			get_tree().quit()
+			return
 		_:
 			return
 

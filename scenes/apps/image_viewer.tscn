@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://bwj73v1den50e"]
+
+[ext_resource type="Texture2D" uid="uid://o5jiy0qr7ijt" path="res://assets/dark-aurora.webp" id="1_ar8ee"]
+[ext_resource type="Script" uid="uid://cv84lrssrit4k" path="res://scripts/image_viewer.gd" id="1_md3mn"]
+
+[node name="ImageViewer" type="Control" unique_id=1035385348]
+custom_minimum_size = Vector2(1280, 800)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_md3mn")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1175112951]
+custom_minimum_size = Vector2(1280, 800)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ar8ee")
+expand_mode = 1
+
+[node name="ImageContainer" type="Control" parent="." unique_id=927511968]
+layout_mode = 1
+anchor_right = 0.016
+anchor_bottom = 0.05
+offset_left = 275.0
+offset_top = 117.0
+offset_right = 957.52
+offset_bottom = 557.0
+
+[node name="Image" type="TextureRect" parent="ImageContainer" unique_id=389261610]
+layout_mode = 0
+offset_right = 788.0
+offset_bottom = 553.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Header" type="PanelContainer" parent="." unique_id=1889849609]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -115.0
+offset_top = 78.0
+offset_right = 88.0
+offset_bottom = 152.0
+grow_horizontal = 2
+
+[node name="FilenameLabel" type="Label" parent="Header" unique_id=1740390533]
+layout_mode = 2
+text = "Filename Will Go Here"
+
+[node name="Footer" type="PanelContainer" parent="." unique_id=1809153881]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -165.0
+offset_top = -123.0
+offset_right = 167.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ControlsLabel" type="Label" parent="Footer" unique_id=1360599540]
+layout_mode = 2
+text = "B: Back     Y: Set as Wallpaper     ← →: Browse"
