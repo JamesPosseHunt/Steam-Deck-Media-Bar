@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://b8ewe0r5tbed2"]
+
+[ext_resource type="Script" uid="uid://cf38q6lu0hblm" path="res://scripts/file_manager.gd" id="1_muwmh"]
+
+[node name="FileManager" type="Control" unique_id=34519047]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_muwmh")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1016307624]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.20738804, 0.20738804, 0.20738804, 1)
+
+[node name="Header" type="PanelContainer" parent="." unique_id=1905576324]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="PathLabel" type="Label" parent="Header" unique_id=1130210158]
+layout_mode = 2
+
+[node name="FileList" type="ScrollContainer" parent="." unique_id=1696866650]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 100.0
+offset_right = 1148.0
+offset_bottom = 545.0
+follow_focus = true
+
+[node name="Entries" type="VBoxContainer" parent="FileList" unique_id=997842872]
+custom_minimum_size = Vector2(200, 200)
+propagate_maximum_size = false
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Footer" type="PanelContainer" parent="." unique_id=722022433]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ControlsLabel" type="Label" parent="Footer" unique_id=23819748]
+layout_mode = 2

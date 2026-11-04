@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d115mx14dwbfc"]
 
 [ext_resource type="Script" uid="uid://bocix51hpdxuy" path="res://control.gd" id="1_kbped"]
-[ext_resource type="Texture2D" uid="uid://o5jiy0qr7ijt" path="res://assets/dark-aurora.webp" id="2_pxugv"]
+[ext_resource type="Texture2D" uid="uid://dsj5eklf506fu" path="res://assets/Background.jpeg" id="2_pxugv"]
 [ext_resource type="Texture2D" uid="uid://dknigdmyys4hc" path="res://assets/CarlyPower.png" id="3_eh0v1"]
 [ext_resource type="Script" uid="uid://bgtk3jhp1rko5" path="res://scripts/power_manager.gd" id="4_pxugv"]
 [ext_resource type="Texture2D" uid="uid://c1tlrsux1i4li" path="res://assets/CarlySettings.png" id="5_eh0v1"]
